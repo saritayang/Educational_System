@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Page</title>
+    <style>
+        Body {
+            font-family: Calibri, Helvetica, sans-serif;
+        }
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #575958;
+            color: white;
+        }
+
+    </style>
+</head>
+<script>
+    function logout() {
+        window.location.replace("login");
+    }
+</script>
+<body>
+<!--log out button for employee page -->
+<button onclick="logout()">Log out</button>
+
+<!-- this is the table on the employee page, which also uses same format on the student page -->
+
+<table id="customers">
+    <tr>
+        <th>Actions</th>
+        <th>School ID</th>
+        <th>Ranking</th>
+        <th>School</th>
+
+        <th>Program</th>
+        <th>Length of Program</th>
+        <th>Total Tuition</th>
+
+        <th>Location</th>
+        <th>Toefl</th>
+        <th>GRE</th>
+
+        <th>Portfolio</th>
+        <th>Deadline</th>
+    </tr>
+    <tr>
+        <td style="text-align: center" colspan="12"><a style="text-decoration: none" href="/addnewschool?validated=true">Add a record</a></td>
+
+    </tr>
+    <tr th:each="school: ${schools}">
+        <td><a style="text-decoration: none" th:href="@{/getbyid/{id}?validated=true(id=${school.getRecordId()})}">Update</a> <a style="text-decoration: none" th:href="@{/deleteschool/{id}?validated=true(id=${school.getRecordId()})}">Delete</a></td>
+        <td th:text="${school.getSchoolId()}" />
+        <td th:text="${school.getRanking()}" />
+        <td th:text="${school.getSchool()}" />
+
+        <td th:text="${school.getProgram()}" />
+        <td th:text="${school.getLengthOfProgram()}" />
+        <td th:text="${school.getTotalTuition()}" />
+
+        <td th:text="${school.getLocation()}" />
+        <td th:text="${school.getToefl()}" />
+        <td th:text="${school.getGre()}" />
+
+        <td th:text="${school.getPortfolio()}" />
+        <td th:text="${school.getDeadline()}" />
+    </tr>
+</table>
+
+</body>
+</html>

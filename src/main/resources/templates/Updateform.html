@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Form</title>
+    <style>
+        Body {
+            font-family: Calibri, Helvetica, sans-serif;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #575958;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #575958;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--/* this is for the form to update school information and everything that has th lets thymeleaf know what to do with that specific action  */-->
+<!-- th action specifies what url to trigger when submit button is clicked-->
+<!-- th object specifies what variable to pass the data into for the controller-->
+<!-- th field specifies what variable in the model to tie the field to in schooldataset-->
+<div>
+<h1>Update fields below:</h1>
+<form action="#" th:action="@{/update}" th:object="${school}" method="post">
+    <label for="schoolid">School ID:</label><br>
+    <input type="text" id="schoolid" name="schoolid" th:field="*{schoolId}"><br>
+    <label for="ranking">Ranking:</label><br>
+    <input type="text" id="ranking" name="ranking" th:field="*{ranking}"><br>
+    <label for="school">School</label><br>
+    <input type="text" id="school" name="school" th:field="*{school}"><br>
+    <label for="program">Program:</label><br>
+    <input type="text" id="program" name="program" th:field="*{program}"><br>
+    <label for="lengthofprogram">Length Of Program</label><br>
+    <input type="text" id="lengthofprogram" name="lengthofprogram" th:field="*{lengthOfProgram}"><br>
+    <label for="totaltuition">Total Tuition:</label><br>
+    <input type="text" id="totaltuition" name="totaltuition" th:field="*{totalTuition}"><br>
+    <label for="location">Location</label><br>
+    <input type="text" id="location" name="location" th:field="*{location}"><br>
+    <label for="toefl">TOEFL:</label><br>
+    <input type="text" id="toefl" name="toefl" th:field="*{toefl}"><br>
+    <!-- Used radio buttons for the following options GRE and portfolio -->
+    <p>GRE:</p>
+    <input type="radio" id="gre" name="gre" th:field="*{gre}" value="Y">
+    <label for="gre">Yes</label><br>
+    <input type="radio" id="gre" name="gre" th:field="*{gre}" value="N">
+    <label for="gre">No</label><br>
+    <p>Portfolio:</p>
+    <input type="radio" id="portfolio" name="portfolio" th:field="*{portfolio}" value="Optional">
+    <label for="portfolio">Optional</label><br>
+    <input type="radio" id="portfolio" name="portfolio" th:field="*{portfolio}" value="Required">
+    <label for="portfolio">Required</label><br>
+    <label for="deadline">Deadline:</label><br>
+    <input type="text" id="deadline" name="deadline" th:field="*{deadline}">
+    <br/>
+    <input type="hidden" id="recordId" name="recordId" th:field="*{recordId}">
+    <input type="submit">
+</form>
+</div>
+
+
+
+</body>
+</html>

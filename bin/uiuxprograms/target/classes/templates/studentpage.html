@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>This is the student page</h1>
+
+<table>
+    <tr>
+        <th>School ID</th>
+        <th>Ranking</th>
+        <th>School</th>
+
+        <th>Program</th>
+        <th>Length of Program</th>
+        <th>Total Tuition</th>
+
+        <th>Location</th>
+        <th>Toefl</th>
+        <th>GRE</th>
+
+        <th>Portfolio</th>
+        <th>Deadline</th>
+    </tr>
+    <tr th:each="school: ${schools}">
+        <td th:text="${school.getSchoolId()}" />
+        <td th:text="${school.getRanking()}" />
+        <td th:text="${school.getSchool()}" />
+
+        <td th:text="${school.getProgram()}" />
+        <td th:text="${school.getLengthOfProgram()}" />
+        <td th:text="${school.getTotalTuition()}" />
+
+        <td th:text="${school.getLocation()}" />
+        <td th:text="${school.getToefl()}" />
+        <td th:text="${school.getGre()}" />
+
+        <td th:text="${school.getPortfolio()}" />
+        <td th:text="${school.getDeadline()}" />
+    </tr>
+</table>
+</body>
+</html>

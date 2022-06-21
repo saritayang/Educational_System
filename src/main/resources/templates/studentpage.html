@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<!-- http://localhost:8081/studentpage.html -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="studentpage.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <meta name= "viewport" content = "width= device-width, initial-scale= 1.0">
+    <style>
+        table {
+            white-space: nowrap;
+            margin-left: -50px;
+        }
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #BF9270;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<div class="sidebar close">
+    <div class = "logo-details">
+        <i class='bx bxl-meta'></i>
+        <a style="text-decoration: none" href="/"><span class= "logo_name">UIUX Schools</span></a>
+        <span class= "logo_name1">Application Requirement</span>
+    </div>
+    <!--sidebar menu-->
+    <ul class= "nav-links">
+        <li>
+            <a href="/allschoolsforstudents">
+                <i class='bx bx-grid-alt'></i>
+                <span style="color: #FFF" class= "link_name">UIUX Schools in the US</span>
+            </a>
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="#">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class= "link_name">GRE</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li> <a href="/getByGRE?required=Y">Yes</a> </li>
+                <li> <a href="/getByGRE?required=N">No</a> </li>
+            </ul>
+
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="#">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class="link_name">TOEFL</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li> <a href="/toefl?lower=60&upper=80">60-80</a> </li>
+                <li> <a href="/toefl?lower=81&upper=90">81-90</a> </li>
+                <li> <a href="/toefl?lower=91">91+</a> </li>
+            </ul>
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="/getprogram">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class="link_name">Program Name</span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="#">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class="link_name">Portfolio</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li> <a href="/getByPortfolio?portfolio=Required">Required</a> </li>
+                <li> <a href="/getByPortfolio?portfolio=Optional">Optional</a> </li>
+            </ul>
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="#">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class="link_name">Location</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li> <a href="/location?location=PA">PA</a> </li>
+                <li> <a href="/location?location=WA">WA</a> </li>
+                <li> <a href="/location?location=CA">CA</a> </li>
+                <li> <a href="/location?location=GA">GA</a> </li>
+                <li> <a href="/location?location=MA">MA</a> </li>
+                <li> <a href="/location?location=NY">NY</a> </li>
+                <li> <a href="/location?location=MI">MI</a> </li>
+                <li> <a href="/location?location=IN">IN</a> </li>
+                <li> <a href="/location?location=MD">MD</a> </li>
+                <li> <a href="/location?location=AZ">AZ</a> </li>
+                <li> <a href="/location?location=TX">TX</a> </li>
+                <li> <a href="/location?location=IL">IL</a> </li>
+            </ul>
+        </li>
+        <li>
+            <div class = "icon-link">
+                <a href="#">
+                    <i class='bx bx-collection'></i>
+                    <span style="color: #FFF" class="link_name">Deadline</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li> <a href="/deadline?deadline=dec">Dec.2021</a> </li>
+                <li> <a href="/deadline?deadline=jan">Jan.2022</a> </li>
+                <li> <a href="/deadline?deadline=feb">Feb.2022</a> </li>
+                <li> <a href="/deadline?deadline=mar">Mar.2022</a> </li>
+                <li> <a href="/deadline?deadline=apr">April.2022</a> </li>
+                <li> <a href="/deadline?deadline=may">May.2022</a> </li>
+                <li> <a href="/deadline?deadline=jun">June.2022</a> </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<section class= "home-section">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <span class= "text">Drop Down Sidebar</span>
+    </div>
+</section>
+
+<!-- Page Content -->
+<div>
+    <h1 class="title" style="color: #BF9270">We prioritize for you</h1>
+</div>
+<hr width="100%" color="#BF9270" size="15" >
+<div class="table">
+    <div style="position: absolute; height: 30px" th:if="${search}">
+        <br/>
+        <form th:action="@{/getprogram}" method="post" >
+            <label>Search:
+            <input placeholder="Search Program Name" name="programName"/></label>
+            <input type="submit" />
+        </form>
+    </div>
+    <div style="margin-top:60px">
+        <table id="customers">
+            <tr th:if="${schools != null}">
+                <th>ID</th>
+                <th>Ranking</th>
+                <th>School</th>
+                <th>Program</th>
+                <th>Length of Program</th>
+                <th>Total Tuition</th>
+                <th>Location</th>
+                <th>Toefl</th>
+                <th>GRE</th>
+                <th>Portfolio</th>
+                <th>Deadline</th>
+            </tr>
+            <tr th:each="school: ${schools}">
+                <td th:text="${school.getSchoolId()}" />
+                <td th:text="${school.getRanking()}" />
+                <td th:text="${school.getSchool()}" />
+                <td th:text="${school.getProgram()}" />
+                <td th:text="${school.getLengthOfProgram()}" />
+                <td th:text="${school.getTotalTuition()}" />
+                <td th:text="${school.getLocation()}" />
+                <td th:text="${school.getToefl()}" />
+                <td th:text="${school.getGre()}" />
+                <td th:text="${school.getPortfolio()}" />
+                <td  class="no-auto-wrap" th:text="${school.getDeadline()}" />
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+</div>
+
+<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+
+</body>
+</html>

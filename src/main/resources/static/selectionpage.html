@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Rankings Of Top 30 Universities</title>
+    <link rel="stylesheet" href="selectionpage.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+            data-auto-a11y="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+</head>
+<body>
+<div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
+<nav class="navbar">
+    <div class="maxwidth">
+        <div class="logo"><a href="#">UI<span>UX</span></a></div>
+        <ul class="menu">
+            <li><a href="#home" class="menu-Btn" style= "color: #fff">Home</a></li>
+            <li><a href="#teams" class="menu-Btn" style= "color: #fff">About Us</a></li>
+            <li><a href="/allschoolsforstudents" class="menu-Btn" style= "color: #fff">Explore Universities</a></li>
+            <li><a href="/login" class="menu-Btn" style= "color: #fff">Employee Login</a></li>
+
+
+        </ul>
+        <div class="menu-Btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<section class="home" id="home">
+    <div class="maxwidth">
+        <div class="home-content">
+            <div class="text-2">Welcome to UIUX Schools </div>
+            <!--<div class="text-3">Explore Universities to find your dream school</div>-->
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Teams Section -->
+<section class="teams" id="teams">
+    <div class="maxwidth">
+        <h6 class="title">UIUX schools was founded to deliver a school search solution that will postively impact your search needs.</h6>
+
+        <div class="carousel owl-carousel">
+            <div class="card">
+                <div class="box">
+                    <img src="image/Sarita_2.jpg" alt="">
+                    <div class="text">Yu Ning Yang</div>
+                    <p>Team Member</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="image/Sai_Hruthik.jpeg" alt="">
+                    <div class="text">V Sai Hruthik Reddy</div>
+                    <p>Team Member</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="image/CindyV.jpg" alt="">
+                    <div class="text">Cindy Velazquez</div>
+                    <p>Team Member</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="image/Navya.jpg" alt="">
+                    <div class="text">Navya Yadagiri</div>
+                    <p>Team Member</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Explore Section -->
+
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if(this.scrollY > 20){
+                $('.navbar').addClass("sticky");
+            }else{
+                $('.navbar').removeClass("sticky");
+            }
+            if(this.scroll > 50){
+                $('.scroll-up-btn').addClass("show");
+            }else{
+                $('.scroll-up-btn').removeClass("show");
+            }
+        });
+
+        //slide function
+        $('.scroll-up-btn').click(function(){
+            $('html').animate({scrollTop: 0});
+        });
+
+        //toggle menu / navbar script
+        $('.menu-Btn').click(function(){
+            $('.navbar .menu').toggleClass("active");
+            $('.menu-Btn i').toggleClass("active");
+        });
+
+        // owl carousel script
+        $('.carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplayTimeOut: 2000,
+            autoplayHoverPause: true,
+            responsive:{
+                0:{
+                    items: 1,
+                    nav: false
+                },
+                600:{
+                    items: 2,
+                    nav: false
+                },
+                1000:{
+                    items: 3,
+                    nav: false
+                },
+            }
+        });
+    });
+
+    </script>
+
+</body>
+</html>
